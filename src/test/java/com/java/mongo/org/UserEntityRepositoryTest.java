@@ -1,7 +1,8 @@
 package com.java.mongo.org;
 
 
-import org.junit.Assert;
+import com.java.mongo.org.dao.UserRepository;
+import com.java.mongo.org.entity.UserEntity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -35,8 +36,8 @@ public class UserEntityRepositoryTest {
     public void updateUser() {
         UserEntity user = new UserEntity();
         user.setId(200000L);
-        user.setUserName("天空");
-        user.setPassWord("fffxxxx");
+        user.setUserName("秋田01");
+        user.setPassWord("dwadawdawdaw");
         userDao.updateUser(user);
     }
 

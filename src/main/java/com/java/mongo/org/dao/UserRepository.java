@@ -1,4 +1,6 @@
-package com.java.mongo.org;
+package com.java.mongo.org.dao;
+
+import com.java.mongo.org.entity.UserEntity;
 
 public interface UserRepository {
     void saveUser(UserEntity userEntity);

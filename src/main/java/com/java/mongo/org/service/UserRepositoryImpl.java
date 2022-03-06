@@ -1,5 +1,7 @@
-package com.java.mongo.org;
+package com.java.mongo.org.service;
 
+import com.java.mongo.org.dao.UserRepository;
+import com.java.mongo.org.entity.UserEntity;
 import com.mongodb.client.result.UpdateResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -46,7 +48,7 @@ public class UserRepositoryImpl implements UserRepository {
         //更新查询返回结果集的第一条
         UpdateResult result =mongoTemplate.updateFirst(query,update, UserEntity.class);
         //更新查询返回结果集的所有
-        // mongoTemplate.updateMulti(query,update,UserEntity.class);
+        mongoTemplate.updateMulti(query, update, UserEntity.class);
         if(result!=null) {
             return result.getMatchedCount();
         } else {
