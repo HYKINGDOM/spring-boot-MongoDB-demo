@@ -32,9 +32,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 // https://mvnrepository.com/artifact/com.graphql-java-kickstart/graphql-spring-boot-starter
-    implementation group: 'com.graphql-java-kickstart', name: 'graphql-spring-boot-starter', version: '12.0.0'
-
-    runtimeOnly group: 'com.graphql-java-kickstart', name: 'altair-spring-boot-starter', version: '12.0.0'
+//    implementation group: 'com.graphql-java-kickstart', name: 'graphql-spring-boot-starter', version: '12.0.0'
+//    testCompileOnly group: 'com.graphql-java-kickstart', name: 'graphql-spring-boot-starter', version: '12.0.0'
+//    runtimeOnly group: 'com.graphql-java-kickstart', name: 'altair-spring-boot-starter', version: '12.0.0'
 
 
 }
