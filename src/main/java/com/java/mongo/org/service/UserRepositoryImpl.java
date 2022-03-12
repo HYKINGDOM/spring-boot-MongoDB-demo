@@ -63,7 +63,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public long updateByBankEntity(BankEntity bankEntity) {
+    public BankEntity updateByBankEntity(BankEntity bankEntity) {
         Query query = new Query(Criteria
                 .where("primaryKey").is(bankEntity.getPrimaryKey())
                 .and("realKey").is(bankEntity.getRealKey()));
@@ -74,7 +74,7 @@ public class UserRepositoryImpl implements UserRepository {
             bankEntity.setCreatedTimestamp(LocalDateTime.now());
             bankEntity.setVersion(1);
             mongoTemplate.save(bankEntity);
-            return 1;
+            return mongoTemplate.findOne(query, BankEntity.class);
         }
 
         Update update = new Update()
@@ -86,7 +86,7 @@ public class UserRepositoryImpl implements UserRepository {
 
         System.out.println(result.getMatchedCount());
 
-        return result.getMatchedCount();
+        return mongoTemplate.findOne(query, BankEntity.class);
 
     }
 

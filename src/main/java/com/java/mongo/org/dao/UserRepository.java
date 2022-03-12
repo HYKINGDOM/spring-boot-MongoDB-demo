@@ -10,7 +10,7 @@ public interface UserRepository {
 
     long updateUser(UserEntity userEntity);
 
-    long updateByBankEntity(BankEntity bankEntity);
+    BankEntity updateByBankEntity(BankEntity bankEntity);
 
     void deleteUserById(Long id);
 }

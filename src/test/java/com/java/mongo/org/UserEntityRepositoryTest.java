@@ -66,17 +66,19 @@ public class UserEntityRepositoryTest {
         userDao.updateByBankEntity(build);
 
         BankEntity build02 = BankEntity.builder().realKey("101").primaryKey("102").value("105").build();
-        userDao.updateByBankEntity(build02);
+        BankEntity bankEntity = userDao.updateByBankEntity(build02);
+        Assertions.assertEquals("101", bankEntity.getCreatedBy());
+        Assertions.assertEquals("101", bankEntity.getUpdatedBy());
 
         BankEntity build03 = BankEntity.builder().realKey("101").primaryKey("102-2").value("105-5").build();
-        long count3 = userDao.updateByBankEntity(build03);
+        userDao.updateByBankEntity(build03);
 
         BankEntity build04 = BankEntity.builder().realKey("101-1").primaryKey("102").value("103-1").build();
         userDao.updateByBankEntity(build04);
 
         BankEntity build05 = BankEntity.builder().realKey("101-2").primaryKey("102-1").value("103-1").build();
         userDao.updateByBankEntity(build05);
-        Assertions.assertEquals(1, count3);
+
     }
 
     @Test
