@@ -1,9 +1,9 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:8999/MGdatabase
-graphql:
-  tools:
-    schema-location-pattern: graphqls/*.graphqls
+      host: localhost
+      port: 8999
+      database: MGdatabase
+
 server:
   port: 8089

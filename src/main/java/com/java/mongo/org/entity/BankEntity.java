@@ -4,9 +4,15 @@ package com.java.mongo.org.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+
+
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -22,13 +28,18 @@ public class BankEntity {
 
     private String realKey;
 
+    @CreatedBy
     private String createdBy;
 
+    @CreatedDate
     private LocalDateTime createdTimestamp;
 
+    @LastModifiedBy
     private String updatedBy;
 
+    @LastModifiedDate
     private LocalDateTime updatedTimestamp;
 
+    @Version
     private int version;
 }
