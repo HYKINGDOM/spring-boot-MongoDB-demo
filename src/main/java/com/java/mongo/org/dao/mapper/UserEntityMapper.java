@@ -5,14 +5,14 @@ import com.java.mongo.org.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.ReportingPolicy;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
  * @author HY
  */
-@Service
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserEntityMapper {
 
 

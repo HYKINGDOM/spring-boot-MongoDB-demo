@@ -3,13 +3,15 @@ package com.java.mongo.org.dao;
 import com.java.mongo.org.dao.mapper.UserEntityMapper;
 import com.java.mongo.org.domain.User;
 import com.java.mongo.org.entity.UserEntity;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-@AllArgsConstructor
-@Repository
+import java.time.LocalDateTime;
+
+
+@RequiredArgsConstructor
+@Component
 public class UserEntityRepositoryImpl implements UserEntityRepository {
 
     private final UserEntityDao userEntityDao;
@@ -20,6 +22,7 @@ public class UserEntityRepositoryImpl implements UserEntityRepository {
     @Override
     public void saveUser(User user) {
         UserEntity userEntity = userEntityMapper.toUserEntity(user);
+        userEntity.setCreatedTimestamp(LocalDateTime.now());
         UserEntity saved = userEntityDao.save(userEntity);
         System.out.println(saved.toString());
     }
