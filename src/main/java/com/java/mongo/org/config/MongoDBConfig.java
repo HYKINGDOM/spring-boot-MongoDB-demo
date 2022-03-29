@@ -1,19 +1,15 @@
 package com.java.mongo.org.config;
 
-import org.springframework.data.domain.AuditorAware;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.MongoDatabaseFactory;
+import org.springframework.data.mongodb.MongoTransactionManager;
 
-import java.util.Optional;
+@Configuration
+public class MongoDBConfig {
 
-/**
- * @author HY
- */
-@Component
-public class MongoDBConfig implements AuditorAware<String> {
-
-    @Override
-    public Optional<String> getCurrentAuditor() {
-        String user = "System";
-        return Optional.of(user);
+    @Bean
+    public MongoTransactionManager transactionManager(MongoDatabaseFactory mongoDatabaseFactory) {
+        return new MongoTransactionManager(mongoDatabaseFactory);
     }
 }
