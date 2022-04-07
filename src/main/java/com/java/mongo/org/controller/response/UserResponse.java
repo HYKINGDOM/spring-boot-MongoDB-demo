@@ -1,11 +1,10 @@
-package com.java.mongo.org.domain;
+package com.java.mongo.org.controller.response;
 
 import com.java.mongo.org.config.EmailValid;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -13,15 +12,13 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class User {
-
-    private Long id;
+public class UserResponse {
 
     private String userName;
 
     private String passWord;
+
     @NotEmpty
     @EmailValid(message = "email failed")
     private String userEmail;
-
 }

@@ -14,7 +14,6 @@ public class MongoDBController {
     @Autowired
     private UserService userService;
 
-
     @PostMapping
     public void testMongo() {
         User user = new User();
