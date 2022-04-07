@@ -25,7 +25,7 @@ public class UserController {
     private final UserMapper userMapper;
 
     @PostMapping("/info")
-    public UserResponse getUserInfo(@RequestBody @Validated UserRequest userRequest) {
+    public UserResponse getUserInfo(@RequestBody @Valid UserRequest userRequest) {
         UserEntity userByUserName = userService.findUserByUserName(userRequest.getUserName());
         return userMapper.toUserResponse(userByUserName);
     }
