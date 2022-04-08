@@ -1,12 +1,9 @@
 package com.java.mongo.org.controller.response;
 
-import com.java.mongo.org.config.EmailValid;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.validation.constraints.NotEmpty;
 
 @Builder
 @NoArgsConstructor
@@ -14,11 +11,16 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class UserResponse {
 
+
+    private String userAccountNum;
+
     private String userName;
+
+    private String niceName;
+
+    private Integer age;
 
     private String passWord;
 
-    @NotEmpty
-    @EmailValid(message = "email failed")
     private String userEmail;
 }

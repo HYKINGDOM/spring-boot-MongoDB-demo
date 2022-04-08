@@ -1,32 +1,36 @@
-package com.java.mongo.org.entity;
+package com.java.mongo.org.infrastucture.entity;
 
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-
-
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-
-@Builder
-@AllArgsConstructor
+/**
+ * @author HY
+ */
 @Data
-@Document(collection = "BankEntity")
-public class BankEntity {
+@Document(collection = "MGdatabase")
+public class UserEntity implements Serializable {
 
-    private String value;
+    private static final long serialVersionUID = -3258839839160856613L;
 
-    private String primaryKey;
+    @Field("userId")
+    private Long id;
 
-    private String realKey;
+    @Field("userName")
+    private String userName;
+
+    @Field("passWord")
+    private String passWord;
+
+    private String emailAddress;
 
     @CreatedBy
     private String createdBy;

@@ -1,14 +1,16 @@
 package com.java.mongo.org.controller.request;
 
 
-import com.java.mongo.org.config.EmailValid;
-import lombok.AllArgsConstructor;
+import com.java.mongo.org.config.PassWordValid;
+import com.java.mongo.org.controller.validator.UserCreate;
+import com.java.mongo.org.controller.validator.UserUpdate;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
+import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
 
 /**
  * @author HY
@@ -17,15 +19,28 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class UserRequest {
 
-    @NotEmpty
-    @NotBlank(message = "user name is blank")
+    @Length(min = 8, max = 20, message = "%s length failed")
+    @NotBlank(message = "%s is blank")
     private String userName;
 
-    @NotEmpty
-    @NotBlank(message = "password failed")
+    @NotEmpty(message = "empty %s failed")
+    private String userAccountNum;
+
+
+    @Length(min = 8, max = 20, message = "%s length failed")
+    @NotEmpty(message = "empty %s failed")
+    private String niceName;
+
+    @Max(value = 99, message = "max %s is failed")
+    @Min(value = 10, message = "min %s is failed")
+    private Integer age;
+
+    @PassWordValid(pattern = "[\\w.]", message = "password faild")
+    @Length(min = 8, max = 20, message = "%s length failed")
+    @NotBlank(message = "password %s failed")
     private String passWord;
 
-    @NotEmpty
-    @EmailValid(message = "email failed")
+    @Email(message = "email failed")
+    @NotEmpty(message = "empty %s failed")
     private String userEmail;
 }

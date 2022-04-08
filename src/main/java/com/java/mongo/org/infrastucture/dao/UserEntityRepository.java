@@ -1,9 +1,8 @@
-package com.java.mongo.org.dao;
+package com.java.mongo.org.infrastucture.dao;
 
 
 import com.java.mongo.org.domain.User;
-import com.java.mongo.org.entity.UserEntity;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import com.java.mongo.org.infrastucture.entity.UserEntity;
 
 
 public interface UserEntityRepository {

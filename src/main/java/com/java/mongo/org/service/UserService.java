@@ -1,7 +1,7 @@
 package com.java.mongo.org.service;
 
 import com.java.mongo.org.domain.User;
-import com.java.mongo.org.entity.UserEntity;
+import com.java.mongo.org.infrastucture.entity.UserEntity;
 
 public interface UserService {
 

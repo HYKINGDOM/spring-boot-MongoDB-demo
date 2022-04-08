@@ -1,11 +1,10 @@
-package com.java.mongo.org.dao;
+package com.java.mongo.org.infrastucture.dao;
 
-import com.java.mongo.org.dao.mapper.UserEntityMapper;
+import com.java.mongo.org.infrastucture.dao.mapper.UserEntityMapper;
 import com.java.mongo.org.domain.User;
-import com.java.mongo.org.entity.UserEntity;
+import com.java.mongo.org.infrastucture.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;

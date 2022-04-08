@@ -1,13 +1,11 @@
-package com.java.mongo.org.dao.mapper;
+package com.java.mongo.org.infrastucture.dao.mapper;
 
 import com.java.mongo.org.domain.User;
-import com.java.mongo.org.entity.UserEntity;
+import com.java.mongo.org.infrastucture.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 /**
  * @author HY

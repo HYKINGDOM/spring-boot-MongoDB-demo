@@ -2,7 +2,7 @@ package com.java.mongo.org.mapper;
 
 import com.java.mongo.org.controller.response.UserResponse;
 import com.java.mongo.org.domain.User;
-import com.java.mongo.org.entity.UserEntity;
+import com.java.mongo.org.infrastucture.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

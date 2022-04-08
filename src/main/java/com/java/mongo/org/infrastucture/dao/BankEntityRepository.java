@@ -1,6 +1,6 @@
-package com.java.mongo.org.dao;
+package com.java.mongo.org.infrastucture.dao;
 
-import com.java.mongo.org.entity.BankEntity;
+import com.java.mongo.org.infrastucture.entity.BankEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

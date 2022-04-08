@@ -1,8 +1,8 @@
 package com.java.mongo.org.service.impl;
 
-import com.java.mongo.org.dao.UserEntityRepository;
+import com.java.mongo.org.infrastucture.dao.UserEntityRepository;
 import com.java.mongo.org.domain.User;
-import com.java.mongo.org.entity.UserEntity;
+import com.java.mongo.org.infrastucture.entity.UserEntity;
 import com.java.mongo.org.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity findUserByUserName(String userName) {
         UserEntity userEntity = new UserEntity();
+        userEntity.setUserName(userName);
         return userEntity;
     }
 
