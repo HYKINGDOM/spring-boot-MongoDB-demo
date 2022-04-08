@@ -2,19 +2,21 @@ package com.java.mongo.org.controller.request;
 
 
 import com.java.mongo.org.config.PassWordValid;
-import com.java.mongo.org.controller.validator.UserCreate;
-import com.java.mongo.org.controller.validator.UserUpdate;
 import lombok.Builder;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 /**
  * @author HY
  */
+@Validated
 @Builder
 @Data
 public class UserRequest {
