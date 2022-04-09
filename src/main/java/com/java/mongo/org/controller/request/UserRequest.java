@@ -2,47 +2,60 @@ package com.java.mongo.org.controller.request;
 
 
 import com.java.mongo.org.config.PassWordValid;
+import com.java.mongo.org.config.UserValid;
+import com.java.mongo.org.controller.validator.Severity;
+import com.java.mongo.org.controller.validator.UserCreate;
+import com.java.mongo.org.controller.validator.UserUpdate;
 import lombok.Builder;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
+import static com.java.mongo.org.config.RequestInvalidConstant.FIELD_IS_BLANK_FAILED;
+import static com.java.mongo.org.config.RequestInvalidConstant.FIELD_IS_EMAIL_FAILED;
+import static com.java.mongo.org.config.RequestInvalidConstant.FIELD_IS_EMPTY_FAILED;
+import static com.java.mongo.org.config.RequestInvalidConstant.FIELD_IS_LENGTH_FAILED;
+import static com.java.mongo.org.config.RequestInvalidConstant.FIELD_IS_MAX_FAILED;
+import static com.java.mongo.org.config.RequestInvalidConstant.FIELD_IS_MIN_FAILED;
+import static com.java.mongo.org.config.RequestInvalidConstant.FIELD_IS_REGULAR_FAILED;
+
 /**
  * @author HY
  */
-@Validated
+@UserValid
 @Builder
 @Data
 public class UserRequest {
 
-    @Length(min = 8, max = 20, message = "%s length failed")
-    @NotBlank(message = "%s is blank")
+    @Length(min = 8, max = 20, message = FIELD_IS_LENGTH_FAILED, groups = UserCreate.class)
+    @NotBlank(message = FIELD_IS_BLANK_FAILED, groups = UserUpdate.class)
     private String userName;
 
-    @NotEmpty(message = "empty %s failed")
+    @NotEmpty(message = FIELD_IS_EMPTY_FAILED, groups = UserUpdate.class, payload = Severity.Info.class)
     private String userAccountNum;
 
 
-    @Length(min = 8, max = 20, message = "%s length failed")
-    @NotEmpty(message = "empty %s failed")
+    @Length(min = 8, max = 20, message = FIELD_IS_LENGTH_FAILED, groups = UserCreate.class)
+    @NotEmpty(message = FIELD_IS_EMPTY_FAILED, payload = Severity.Warn.class)
     private String niceName;
 
-    @Max(value = 99, message = "max %s is failed")
-    @Min(value = 10, message = "min %s is failed")
+    @Max(value = 99, message = FIELD_IS_MAX_FAILED, payload = Severity.Error.class)
+    @Min(value = 10, message = FIELD_IS_MIN_FAILED, payload = Severity.Warn.class)
     private Integer age;
 
-    @PassWordValid(pattern = "[\\w.]", message = "password faild")
-    @Length(min = 8, max = 20, message = "%s length failed")
-    @NotBlank(message = "password %s failed")
+    @PassWordValid(pattern = "[\\w.]", message = FIELD_IS_REGULAR_FAILED, groups = UserCreate.class, payload = Severity.Error.class)
+    @Length(min = 8, max = 20, message = FIELD_IS_LENGTH_FAILED)
+    @NotBlank(message = FIELD_IS_BLANK_FAILED)
     private String passWord;
 
-    @Email(message = "email failed")
-    @NotEmpty(message = "empty %s failed")
+    @Email(message = FIELD_IS_EMAIL_FAILED)
+    @NotEmpty(message = FIELD_IS_EMPTY_FAILED, groups = UserUpdate.class)
     private String userEmail;
 }

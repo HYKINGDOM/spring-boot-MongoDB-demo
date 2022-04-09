@@ -9,9 +9,13 @@ import com.java.mongo.org.infrastucture.dao.UserEntityDao;
 import com.java.mongo.org.infrastucture.dao.UserEntityRepository;
 import com.java.mongo.org.domain.User;
 import com.java.mongo.org.service.UserService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @SpringBootTest
 public class UserEntityRepositoryTest {
@@ -67,6 +71,31 @@ public class UserEntityRepositoryTest {
                 .create();
         String toJson = gson.toJson(user);
         System.out.println(toJson);
+    }
+
+    @Test
+    public void test_pattern_match() {
+        String regex = "[^\\w.]";
+        String input = "dwdasdasdasd";
+        for (int i = 0; i < 10000; i++) {
+            if (Pattern.matches(regex, input))
+                System.out.println(Pattern.matches(regex, input));
+        }
+        boolean matches = Pattern.matches(regex, input);
+        Assertions.assertTrue(matches);
+    }
+
+
+    @Test
+    public void test_pattern_match_01() {
+        String regex = "[\\w.]";
+        String input = "@@!!!1@@@";
+
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(input);
+        boolean matches = m.find();
+        Assertions.assertTrue(matches);
+
     }
 
 
