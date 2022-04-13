@@ -9,9 +9,7 @@ import com.java.mongo.org.controller.validator.UserUpdate;
 import lombok.Builder;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.validation.annotation.Validated;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
