@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -75,8 +76,8 @@ public class UserEntityRepositoryTest {
 
     @Test
     public void test_pattern_match() {
-        String regex = "[^\\w.]";
-        String input = "dwdasdasdasd";
+        String regex = "^\\w+( \\w+)*$";
+        String input = "dwd  as¥¥¥da sdasd";
         for (int i = 0; i < 10000; i++) {
             if (Pattern.matches(regex, input))
                 System.out.println(Pattern.matches(regex, input));
@@ -88,8 +89,8 @@ public class UserEntityRepositoryTest {
 
     @Test
     public void test_pattern_match_01() {
-        String regex = "[\\w.]";
-        String input = "@@!!!1@@@";
+        String regex = "^\\w+( \\w+)*$";
+        String input = "dwd  as¥¥¥da sdasd";
 
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(input);
@@ -98,5 +99,15 @@ public class UserEntityRepositoryTest {
 
     }
 
+
+    @Test
+    public void test_pattern_match_02() {
+        Double d1 = new Double(1);
+
+        BigDecimal bigDecimal = new BigDecimal(d1);
+
+        System.out.println(bigDecimal);
+
+    }
 
 }
