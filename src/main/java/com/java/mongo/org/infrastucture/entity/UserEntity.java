@@ -11,12 +11,13 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author HY
  */
 @Data
-@Document(collection = "MGdatabase")
+@Document(collection = "MGdatabase.userNameEntities")
 public class UserEntity implements Serializable {
 
     private static final long serialVersionUID = -3258839839160856613L;
@@ -26,6 +27,9 @@ public class UserEntity implements Serializable {
 
     @Field("userName")
     private String userName;
+
+    @Field("userNameEntities")
+    private List<UserNameEntity> userNameEntities;
 
     @Field("passWord")
     private String passWord;
